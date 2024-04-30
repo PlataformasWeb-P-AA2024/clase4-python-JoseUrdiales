@@ -2,10 +2,11 @@ archivo = open("data/atp_tennis.csv", "r")
 
 lineas = archivo.readlines()
 lineas = [l.split("|") for l in lineas]
+print(len(lineas)) #para saber cuantas lineas existen en el csv
 
-for x in lineas:
+for i, x in enumerate(lineas):
 	cadena = """<b>Torneo:</b> %s <br> <b>Ganador:</b> %s""" %(x[0], x[9])
 	print(cadena)
-	archivo_generado = open("data/%s.html" % (x[9]), "w")
+	archivo_generado = open("dataResultado/ganador_%d.html" % (i + 1), "w")
 	archivo_generado.writelines("%s\n" %(cadena))
 	archivo_generado.close()
